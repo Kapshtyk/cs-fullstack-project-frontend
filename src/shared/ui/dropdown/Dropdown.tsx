@@ -41,6 +41,12 @@ export function Dropdown({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleToggle();
+    }
+  };
+
   const handleSelect = (optionValue: number | null | string) => {
     onChange(optionValue?.toString() || "");
     setIsOpen(false);
@@ -61,6 +67,7 @@ export function Dropdown({
           id={`${name}-${uniqueId}`}
           className={clsx("custom-dropdown-select", { open: isOpen })}
           onClick={handleToggle}
+          onKeyDown={handleKeyDown}
           onFocus={onFocus}
           tabIndex={disabled ? -1 : 0}
           role="combobox"
@@ -77,20 +84,22 @@ export function Dropdown({
           <ChevronDown className="arrow" />
         </div>
         {isOpen && (
-          <ul
-            className="custom-dropdown-options"
-            role="listbox"
-            aria-labelledby={uniqueId}
-          >
+          <ul className="custom-dropdown-options" aria-labelledby={uniqueId}>
             {options.map((option) => (
               <li
                 key={option.value}
                 onClick={() => handleSelect(option.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    handleSelect(option.value);
+                  }
+                }}
+                tabIndex={0}
+                role="option"
+                aria-selected={option.value?.toString() === value}
                 className={clsx({
                   selected: option.value?.toString() === value,
                 })}
-                role="option"
-                aria-selected={option.value?.toString() === value}
               >
                 {option.label}
               </li>

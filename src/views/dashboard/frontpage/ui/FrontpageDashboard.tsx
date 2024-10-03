@@ -56,8 +56,15 @@ export const FrontendDashboard = () => {
                   height="100"
                 />
               </td>
-              <td onClick={() => setSelectedFrontpage(frontpage)}>
-                <Button onClick={() => handleEditClick(frontpage)}>Edit</Button>
+              <td>
+                <Button
+                  onClick={() => {
+                    setSelectedFrontpage(frontpage);
+                    handleEditClick(frontpage);
+                  }}
+                >
+                  Edit
+                </Button>
               </td>
             </tr>
           ))}
