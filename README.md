@@ -42,14 +42,14 @@ Authorisation and authentication is probably the most complex and complicated pa
 
 ### Prerequisites
 
-1. For local testing [the backend](https://github.com/Kapshtyk/fs18_CSharp_FullStack_Backend) should be up and running on the same machine, as the deployed version of the backend is set to only work with the deployed version of the application (CORS).
+1. For local testing [the backend](https://github.com/Kapshtyk/cs-fullstack-project-backend) should be up and running on the same machine, as the deployed version of the backend is set to only work with the deployed version of the application (CORS).
 2. Node.js (v20 or higher)
 
 ### Installation:
 1. Clone the repository: 
 ```
-git clone git@github.com:Kapshtyk/fs18_CSharp_FullStack_Backend.git
-cd fs18_CSharp_FullStack_Backend
+git clone git@github.com:Kapshtyk/cs-fullstack-project-frontend.git
+cd cs-fullstack-project-frontend
 ```
 2. Install the dependencies:
 ```
