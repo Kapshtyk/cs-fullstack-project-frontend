@@ -1,5 +1,6 @@
-# Crazy Shop
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Kapshtyk_cs-fullstack-project-frontend)](https://sonarcloud.io/summary/new_code?id=Kapshtyk_cs-fullstack-project-frontend)
 
+# Crazy Shop
 ## Project Overview
 
 This project is a modern web application built using Next.js, TypeScript, and various other technologies. It aims to provide a seamless user experience with features such as user authentication, product listings, and more. The application is designed to be scalable, maintainable, and easy to deploy.
