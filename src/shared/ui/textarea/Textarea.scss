@@ -1,0 +1,30 @@
+.textarea {
+  resize: vertical;
+  width: 100%;
+  border: $border;
+  border-radius: $radius-small;
+  padding: $spacing;
+  cursor: text;
+  color: $foreground;
+
+  @include hover {
+    border-color: $accent;
+  }
+
+  &:disabled {
+    background-color: $grey;
+    color: $grey-dark;
+    cursor: not-allowed;
+  }
+
+  &-error {
+    border-color: $error;
+    color: $error;
+    outline: $error solid 2px;
+    outline-offset: -2px;
+
+    @include hover {
+      border-color: $error;
+    }
+  }
+}

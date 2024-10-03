@@ -1,0 +1,50 @@
+.button {
+  @include fluid-text(18, 16);
+
+  border-radius: $radius-small;
+  padding-block: $spacing;
+  padding-inline: calc(2 * $spacing);
+  cursor: pointer;
+  transition: background-color $transition-duration ease-in-out;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: 600;
+
+  &--primary {
+    background-color: $accent;
+    color: $foreground;
+    border: none;
+
+    @include hover {
+      background-color: color.adjust($accent, $lightness: 20%);
+    }
+
+    @include focus {
+      background-color: color.adjust($accent, $lightness: 20%);
+    }
+
+    @include active {
+      background-color: color.adjust($accent, $lightness: -10%);
+    }
+  }
+
+  &--secondary {
+    background-color: $foreground;
+    color: $accent;
+    border: $border;
+    border-color: $foreground;
+  }
+
+  &--disabled {
+    background-color: $grey;
+    color: $grey-dark;
+    cursor: not-allowed;
+  }
+
+  &--icon {
+    @include square(24px);
+
+    padding: 4px;
+    color: white;
+  }
+}

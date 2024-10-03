@@ -1,0 +1,22 @@
+.add-to-cart-form {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  gap: $form-spacing;
+  align-items: center;
+
+  input {
+    text-align: center;
+  }
+}
+
+.add-to-cart--button {
+  display: flex;
+  gap: $spacing;
+  align-items: center;
+  padding-inline: 40px !important;
+}
+
+.add-to-cart--icon {
+  @include square(24px);
+}

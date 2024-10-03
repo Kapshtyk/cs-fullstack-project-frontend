@@ -1,0 +1,9 @@
+.form-row {
+  @include fluid-text(18, 16);
+
+  display: flex;
+  flex-direction: column;
+  gap: $form-spacing;
+  align-items: flex-start;
+  width: 100%;
+}

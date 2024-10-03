@@ -1,0 +1,46 @@
+.reviews-page {
+  display: flex;
+  flex-direction: column;
+  gap: calc($spacing * 2);
+  align-items: flex-start;
+
+  &__back-button {
+    align-self: flex-start;
+    margin-bottom: $spacing;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: calc($spacing * 2);
+  }
+
+  &__review {
+    display: flex;
+    gap: calc($spacing * 2);
+
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing;
+      padding-block: $spacing;
+      border-bottom: $border;
+    }
+
+    &_header {
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing;
+    }
+
+    &_body {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing;
+
+      p:first-child {
+        font-weight: 500;
+      }
+    }
+  }
+}

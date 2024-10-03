@@ -1,0 +1,123 @@
+.order {
+  background-color: #fff;
+  border: 1px solid $grey;
+  border-radius: $radius-small;
+  padding: $spacing;
+  position: relative;
+  margin-bottom: 1rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $grey;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    color: $grey-dark;
+    margin: 0;
+  }
+
+  &__date {
+    @include fluid-text(18, 16);
+
+    color: $grey-dark;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__user-id {
+    color: $grey-dark;
+  }
+
+  &__total-amount {
+    font-weight: bold;
+    color: $foreground;
+  }
+
+  &__items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid $grey;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  &__item-image {
+    flex-shrink: 0;
+    margin-right: 1rem;
+    width: 100px;
+    aspect-ratio: 1;
+    height: auto;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius-small;
+    }
+  }
+
+  &__item-info {
+    flex-grow: 1;
+  }
+
+  &__item-title {
+    @include fluid-text(20, 18);
+    margin: 0 0 0.5rem;
+    color: $foreground;
+  }
+
+  &__item-quantity,
+  &__item-price {
+    @include fluid-text(16, 14);
+    color: $grey-dark;
+    margin: 0.25rem 0;
+
+    p {
+      font-size: inherit;
+      color: $grey;
+    }
+  }
+}
+
+@include mobile {
+  .order {
+    &__header,
+    &__info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__date,
+    &__total-amount {
+      margin-top: 0.5rem;
+    }
+
+    &__item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__item-image {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

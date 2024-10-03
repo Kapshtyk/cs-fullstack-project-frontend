@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  max-width: calc($container-max-width + 2 * $container-padding-x);
+  margin-inline: auto;
+  padding-inline: $container-padding-x;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

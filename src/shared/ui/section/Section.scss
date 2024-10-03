@@ -1,0 +1,14 @@
+.section {
+  margin-inline: auto;
+  min-height: calc(100vh - $header-height - $footer-height);
+  max-width: $container-max-width;
+  padding-inline: $container-padding-x;
+  padding-block: $spacing * 2;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing;
+
+  &--wide {
+    max-width: 100vw;
+  }
+}

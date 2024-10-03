@@ -1,0 +1,8 @@
+.user-profile {
+  &__actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-block: $spacing;
+    gap: $spacing;
+  }
+}

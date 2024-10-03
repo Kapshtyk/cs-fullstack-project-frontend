@@ -1,0 +1,19 @@
+.cart-button {
+  position: relative;
+
+  &__icon {
+    @include square(24px);
+  }
+
+  &__product-counter {
+    @include square(24px);
+    @include flex-center;
+
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: color.adjust($accent, $lightness: 20%);
+    border-radius: $radius-small;
+    display: flex;
+  }
+}

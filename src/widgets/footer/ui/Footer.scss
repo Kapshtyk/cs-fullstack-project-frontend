@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: $footer-height;
+  flex-direction: column;
+  background-color: $grey-dark;
+  text-align: center;
+  width: 100%;
+  gap: $spacing;
+
+  &__heading {
+    @include fluid-text(64, 48);
+    color: $accent;
+    font-family: var(--font-niconne);
+    margin-block: $spacing;
+  }
+
+  &__address {
+    @include fluid-text(48, 32);
+
+    color: $background;
+    margin-block: $spacing;
+  }
+
+  &__copy {
+    @include fluid-text(32, 24);
+
+    color: $accent;
+    margin-block: $spacing;
+  }
+}

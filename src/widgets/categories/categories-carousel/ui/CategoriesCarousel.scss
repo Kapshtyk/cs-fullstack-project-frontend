@@ -1,0 +1,38 @@
+.categories-carousel {
+  display: flex;
+  overflow-x: auto;
+  margin-inline: -20px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: $container-padding-x;
+
+  @include hover {
+    > :not(:hover) img {
+      filter: brightness(70%);
+    }
+  }
+
+  &__item {
+    scroll-snap-align: start;
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  &__item:first-of-type {
+    padding-left: $container-padding-x;
+  }
+
+  &__item:last-of-type {
+    padding-right: $container-padding-x;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+    img {
+      object-fit: cover;
+      transition: filter 0.2s;
+    }
+  }
+}

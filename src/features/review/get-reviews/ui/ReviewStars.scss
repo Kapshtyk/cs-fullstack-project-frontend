@@ -1,0 +1,42 @@
+.stars {
+  display: flex;
+  gap: calc($spacing * 2);
+  align-items: center;
+
+  &__title {
+    margin-block: 0;
+  }
+
+  &__container {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__star {
+    color: $accent;
+    @include square(20px);
+
+    @include mobile {
+      @include square(15px);
+    }
+
+    &-wide {
+      @include square(30px);
+
+      @include mobile {
+        @include square(20px);
+      }
+    }
+  }
+
+  &__rating,
+  &__count {
+    @include fluid-text(16px, 14px);
+
+    color: $grey;
+
+    @include mobile {
+      display: none;
+    }
+  }
+}

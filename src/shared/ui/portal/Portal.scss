@@ -1,0 +1,10 @@
+.dialog {
+  border: none;
+  padding: 0;
+  margin: auto;
+  background-color: transparent;
+
+  &::backdrop {
+    background-color: rgb(0 0 0 / 50%);
+  }
+}

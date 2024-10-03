@@ -1,0 +1,17 @@
+{
+  // Explicitly tell ESLint extension to watch typescript files for linting errors
+  "eslint.validate": ["typescript", "typescriptreact", "json"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[scss]": {
+    "editor.formatOnSave": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "scssFormatter.printWidth": 80
+}

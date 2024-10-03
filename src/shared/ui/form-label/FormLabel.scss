@@ -1,0 +1,7 @@
+.label {
+  @include fluid-text(18, 16);
+
+  &-error {
+    color: $error;
+  }
+}

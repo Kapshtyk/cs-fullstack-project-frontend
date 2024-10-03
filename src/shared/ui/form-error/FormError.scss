@@ -1,0 +1,11 @@
+.error-message {
+  @include fluid-text(16, 14);
+
+  display: flex;
+  gap: $spacing;
+  color: $error;
+
+  > svg {
+    @include square(16px);
+  }
+}

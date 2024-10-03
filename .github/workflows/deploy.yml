@@ -1,0 +1,30 @@
+name: Build, Push Docker Images and Deploy
+
+on: [push]
+env:
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+
+jobs:
+  deploy:
+    if: github.ref_name == ${{ vars.CONDITION }} 
+    runs-on: ubuntu-latest
+    steps:   
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Execute remote SSH commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd fs18_CSharp_FullStack_Frontend
+            git pull
+            touch .env
+            echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+            echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}" >> .env
+            echo "NEXT_PUBLIC_BACKEND_HOSTNAME=${{ secrets.NEXT_PUBLIC_BACKEND_HOSTNAME }}" >> .env
+            echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+            sudo docker-compose down
+            sudo docker-compose up --build -d

@@ -1,0 +1,16 @@
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: $form-spacing;
+
+  &__controls {
+    display: flex;
+    gap: $form-spacing;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+}

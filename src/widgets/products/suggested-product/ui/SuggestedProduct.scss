@@ -1,0 +1,56 @@
+.suggested-product {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing;
+
+  &__heading {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: $background;
+    text-transform: uppercase;
+  }
+
+  &__article {
+    background-color: $background;
+    padding: $spacing;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing;
+    border-radius: $radius-small;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    gap: $spacing;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 1.2em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-weight: 300;
+  }
+
+  &__image-wrapper {
+    display: none;
+
+    @include mobile-above {
+      display: block;
+    }
+
+    align-self: center;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    border-radius: $radius-small;
+  }
+}

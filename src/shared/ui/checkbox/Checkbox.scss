@@ -1,0 +1,34 @@
+.checkbox-wrapper {
+  display: flex;
+  gap: $form-spacing;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentcolor;
+  width: 28px;
+  height: 28px;
+  border: $border;
+  border-radius: 20%;
+  display: grid;
+  place-content: center;
+
+  &::before {
+    content: "";
+    background-color: $accent;
+    width: 16px;
+    height: 16px;
+    border-radius: 20%;
+    transform: scale(0);
+    transition: all $transition-duration ease-in-out;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+}

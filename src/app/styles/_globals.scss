@@ -1,0 +1,147 @@
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: $transition-duration;
+}
+
+*:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: -2px;
+}
+
+body {
+  @include fluid-text(18, 16);
+
+  line-height: 1.4;
+  font-family: $font-family-base;
+  font-weight: 400;
+  color: $foreground;
+  background-color: $background;
+  scrollbar-gutter: stable;
+  overscroll-behavior: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+h1,
+.h1 {
+  @include fluid-text(64, 48);
+}
+
+h2,
+.h2 {
+  @include fluid-text(48, 36);
+}
+
+h3,
+.h3 {
+  @include fluid-text(36, 24);
+}
+
+h4,
+.h4 {
+  @include fluid-text(24, 18);
+}
+
+p {
+  @include fluid-text(18, 16);
+}
+
+table {
+  @include fluid-text(16, 14);
+
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: $radius-small;
+  overflow: hidden;
+
+  th,
+  td {
+    padding: $spacing;
+    text-align: left;
+    border-bottom: 1px solid color.adjust($foreground, $lightness: 80%);
+    min-height: 28px;
+  }
+
+  th {
+    background-color: color.adjust($accent, $lightness: 50%);
+    color: $accent;
+  }
+
+  tbody {
+    tr {
+      transition: background-color $transition-duration;
+
+      &:hover {
+        background-color: color.adjust($accent, $lightness: 50%);
+      }
+    }
+  }
+
+  @include mobile {
+    th,
+    td {
+      padding: $spacing / 2;
+    }
+
+    &.responsive {
+      thead {
+        display: none;
+      }
+
+      tr {
+        display: block;
+        margin-bottom: $spacing;
+        border: 1px solid color.adjust($foreground, $lightness: 70%);
+        border-radius: $radius-small;
+      }
+
+      td {
+        display: block;
+        position: relative;
+        padding-left: 50%;
+
+        &::before {
+          content: attr(data-label);
+          position: absolute;
+          left: $spacing;
+          width: 25%;
+          text-align: left;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: $accent;
+  top: 0.2em;
+  left: -0.1em;
+  z-index: -1;
+  box-shadow: $shadow;
+}

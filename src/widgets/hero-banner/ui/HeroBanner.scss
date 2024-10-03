@@ -1,0 +1,77 @@
+.hero-banner-container {
+  position: relative;
+  height: calc(100vh - $header-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-inline: -20px;
+  margin-top: -20px;
+  padding-inline: $container-padding-x * 2;
+  transition: height 0.5s ease;
+  padding-bottom: $container-padding-x * 2;
+}
+
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: color.scale($foreground, $alpha: -50%);
+  z-index: 2;
+}
+
+.hero-cta {
+  z-index: 3;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-text {
+  @include fluid-text(64, 42);
+
+  color: $background;
+  font-weight: 800;
+  line-height: 0.9em;
+  padding: $container-padding-x;
+  padding-top: 1.7em;
+  z-index: 3;
+  align-self: flex-end;
+  max-width: 100vw;
+  text-align: right;
+
+  @include mobile-above {
+    max-width: 80vw;
+  }
+
+  p {
+    font-size: 1em;
+    text-wrap: balance;
+    position: relative;
+    text-shadow: $foreground 5px 5px 5px;
+
+    &::first-letter {
+      margin-left: 1em;
+      font-size: 3em;
+      font-weight: 800;
+      font-family: var(--font-niconne);
+      color: $accent;
+      line-height: inherit;
+
+      @include mobile-above {
+        margin-left: 1.4em;
+      }
+
+      @include tablet-above {
+        margin-left: 1.6em;
+      }
+
+      @include desktop-above {
+        margin-left: 2em;
+      }
+    }
+  }
+}

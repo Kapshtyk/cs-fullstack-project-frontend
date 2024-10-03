@@ -1,0 +1,18 @@
+.admin-header {
+  width: 100%;
+  height: 50px;
+  background-color: $accent;
+  border-bottom: 1px solid $foreground;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: $spacing;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    padding: $spacing;
+    height: auto;
+  }
+}

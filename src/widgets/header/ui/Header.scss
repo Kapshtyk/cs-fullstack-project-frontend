@@ -1,0 +1,71 @@
+.header {
+  height: $header-height;
+  background-color: $grey-dark;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $container-padding-x;
+  align-items: center;
+  color: $background;
+
+  &__logo {
+    @include fluid-text(48, 36);
+
+    color: $accent;
+    font-family: var(--font-niconne);
+  }
+
+  &__user-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &-avatar {
+      @include square(50px);
+
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      object-fit: cover;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__menu-link {
+    @include fluid-text(18, 16);
+    @include flex-center(true);
+
+    @include mobile {
+      display: none;
+    }
+
+    font-weight: 600;
+    padding-inline: $spacing;
+    height: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      width: 0;
+      height: 4px;
+      background-color: $accent;
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &--active::after {
+      width: 100%;
+    }
+  }
+}
