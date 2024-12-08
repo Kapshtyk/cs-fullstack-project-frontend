@@ -117,12 +117,16 @@ export default async function ProductsPage({
         caption: product.title,
         representativeOfPage: "True",
       },
-      aggragateRating: {
+      aggregateRating: {
         "@type": "AggregateRating",
         ratingValue:
           reviews?.items.reduce((acc, review) => acc + review.rating, 0) /
           reviews.items.length,
         reviewCount: reviews?.items.length,
+        itemReviewed: {
+          "@type": "Thing",
+          name: product.title,
+        },
       },
       offers: {
         "@type": "Offer",
@@ -132,7 +136,7 @@ export default async function ProductsPage({
       },
       review: reviews?.items.map((review) => ({
         "@type": "Review",
-        author: review.user.name,
+        author: review.user.firstName + " " + review.user.lastName,
         reviewBody: review.description,
         name: review.title,
         reviewRating: {
