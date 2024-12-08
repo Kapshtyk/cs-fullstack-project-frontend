@@ -58,6 +58,59 @@ export const Product: React.FC<ProductsPageProps> = ({ product }) => {
 
   return (
     <Section title={data.title}>
+      <Script
+        id="product-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `{
+            "@context": "https://schema.org",
+            "@type": "Product",
+            ${
+              reviews?.items &&
+              reviews.items.length > 0 &&
+              `"aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "${
+                reviews.items.reduce((acc, review) => acc + review.rating, 0) /
+                reviews.items.length
+              }",
+              "reviewCount": "${reviews?.items.length}"
+              }",
+            },
+            "description": "${data.description}",
+            "name": "${data.title}",
+            "image": "${data.productImage[0]?.url}",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock",
+              "price": "${data.price}",
+              "priceCurrency": "EUR"
+            },
+            ${
+              reviews?.items &&
+              `
+            "review": [
+              ${reviews.items.map(
+                (review) => `
+                {
+                  "@type": "Review",
+                  "author": "${review.user.name}",
+                  "reviewBody": "${review.description}",
+                  "name": "${review.title}",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "bestRating": "5",
+                    "ratingValue": "${review.rating}",
+                    "worstRating": "1"
+                  }
+                }`,
+              )}
+            ],`
+            }
+          }`
+            }}`,
+        }}
+      />
       <ProductPage
         product={data}
         actionsComponent={actionComponent}
