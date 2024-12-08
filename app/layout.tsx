@@ -39,6 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content="l-tWE7JtmlunNhxVv9JHCIYlF7dwgKDYbe68mJJsjyA"
+      />
       <body className={`${niconne.variable} ${spaceGrotesk.variable}`}>
         <Providers>
           <MainLayout>{children}</MainLayout>
