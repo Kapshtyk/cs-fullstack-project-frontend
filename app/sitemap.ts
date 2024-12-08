@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const sitemap: MetadataRoute.Sitemap = [
     {
-      url: "/",
+      url: `${process.env.NEXTAUTH_URL}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   products.items.forEach((product) =>
     sitemap.push({
-      url: `/products/${product.id}`,
+      url: `${process.env.NEXTAUTH_URL}/products/${product.id}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
