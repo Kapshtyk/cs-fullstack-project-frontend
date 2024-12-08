@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 import { ProductPage } from "@/views/product";
 
@@ -9,6 +10,8 @@ import { getProducts } from "@/features/product/get-products/";
 
 import { getAbsoluteUrl } from "@/shared/lib";
 import { Section } from "@/shared/ui";
+
+import { getReviews } from "@/src/features/review/get-reviews";
 
 export async function generateStaticParams() {
   const products = await getProducts({
@@ -94,7 +97,63 @@ export default async function ProductsPage({
       notFound();
     }
 
-    return <ProductPage product={product} />;
+    const reviews = await getReviews({
+      productId: product.id,
+      page: 1,
+      perPage: 1000,
+      userId: null,
+    });
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.title,
+      description: product.description,
+      image: {
+        "@type": "ImageObject",
+        contentUrl: product.productImage[0]
+          ? getAbsoluteUrl(product.productImage[0].url)
+          : "",
+        caption: product.title,
+        representativeOfPage: "True",
+      },
+      aggragateRating: {
+        "@type": "AggregateRating",
+        ratingValue:
+          reviews?.items.reduce((acc, review) => acc + review.rating, 0) /
+          reviews.items.length,
+        reviewCount: reviews?.items.length,
+      },
+      offers: {
+        "@type": "Offer",
+        price: product.price,
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+      },
+      review: reviews?.items.map((review) => ({
+        "@type": "Review",
+        author: review.user.name,
+        reviewBody: review.description,
+        name: review.title,
+        reviewRating: {
+          "@type": "Rating",
+          bestRating: "5",
+          ratingValue: review.rating,
+          worstRating: "1",
+        },
+      })),
+    };
+
+    return (
+      <>
+        <Script
+          id="product-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <ProductPage product={product} />;
+      </>
+    );
   } catch (error) {
     notFound();
   }
