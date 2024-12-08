@@ -42,6 +42,7 @@ export function updateCookie(
   request: NextRequest,
   response: NextResponse,
 ): NextResponse<unknown> {
+  console.log("sessionToken", sessionToken);
   if (sessionToken && sessionToken !== null) {
     request?.cookies?.set(SESSION_COOKIE, sessionToken);
     response = NextResponse.next({
@@ -77,12 +78,14 @@ export const middleware: NextMiddleware = async (request: NextRequest) => {
       return NextResponse.redirect(new URL(SIGNIN_SUB_URL, request.url));
     }
   }
-
+  console.log("token", token);
   if (shouldUpdateToken(token)) {
     try {
       const newTokens = await refreshToken({
         refreshToken: token.refreshToken,
       });
+
+      console.log("newTokens", newTokens);
 
       const newSessionToken = await encode({
         secret: AUTH_SECRET,
