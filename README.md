@@ -22,12 +22,6 @@ Ui and model folders can also be on the widgets layer if I need to use some feat
 
 The application has three levels of access: for anonymous users, for clients and for admins. Admins can manage products, categories, orders, users and the frontpage via the dashboard. Users can manage their profiles, shopping carts and orders.
 
-[Deployed version of the application](http://crazy-shop.zapto.org)
-
-Admin credentials: 
-   - email: test@user.com
-   - password: sygxy2-cuxteb-maJcaq
-
 ## Features
 
 - **User Authentication**: Secure login and registration system.
